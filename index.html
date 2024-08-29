@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:black" width = 40px>
+<p width=40px id="demo" style="color:#00ff00;font-family:monospace;font-size:17px"></p>
+
+<script>
+var i = 0;
+var txt = 'Congratulations. You have made it to the second stage of the puzzle. <br><br> From now on use only a Caesar Cipher with shift 11. <br><br> Good luck. <br><br> - #';
+var unmodified = "";
+var isOn = true;
+var lastTime = Date.now();
+var now = Date.now();
+function t() {
+  if (i < txt.length) {
+  	now = Date.now();
+    if(now - lastTime >= 300){
+		isOn = !isOn;
+        lastTime = now;
+	}
+    unmodified += txt.charAt(i);
+    document.getElementById("demo").innerHTML = unmodified  + ((isOn)? "_" : "");
+    i++;
+    setTimeout(t, 50);
+  }
+}
+window.onload=t;
+</script>
+</body>
+</html>
